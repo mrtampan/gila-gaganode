@@ -13,17 +13,23 @@ jobs:
     - name: Download dan Start Gaga gila
       run: curl -o app-linux-386.tar.gz https://assets.coreservice.io/public/package/21/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-386.tar.gz && rm -f app-linux-386.tar.gz && cd ./app-linux-386 && sudo ./app service install
     - name: Run App
-      run: sudo ./app service start
+      run: |
+        sudo ./app service start
     - name: Run Status
-      run: ./app status
+      run: |
+        ./app status
     - name: Run Status
-      run: ./app status
+      run: |
+        ./app status
     - name: Set Token
-      run: sudo ./apps/gaganode/gaganode config set --token=${{ secrets.TOKENGAGA }}
+      run: |
+        sudo ./apps/gaganode/gaganode config set --token=${{ secrets.TOKENGAGA }}
     - name: Restart App
-      run: ./app restart
+      run: |
+        ./app restart
     - name: Status
-      run: ./app status
+      run: |
+        ./app status
     - uses: fastai/workflows/ssh@master
       with:
         ssh_key: ${{ secrets.SSH_KEY }}
