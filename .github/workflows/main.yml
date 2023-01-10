@@ -11,10 +11,11 @@ jobs:
     timeout-minutes: 99999999999999999
     steps:
     - name: Download dan Start Gaga gila
-      run: curl -o app-linux-386.tar.gz https://assets.coreservice.io/public/package/21/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-386.tar.gz && rm -f app-linux-386.tar.gz && cd ./app-linux-386 && sudo ./app service install
+      run: |
+        curl -o app-linux-386.tar.gz https://assets.coreservice.io/public/package/21/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-386.tar.gz && rm -f app-linux-386.tar.gz && cd ./app-linux-386 && sudo ./app service install
     - name: Run App
       run: |
-        sudo app service start
+        sudo ./app service start
     - name: Run Status
       run: |
         ./app status
