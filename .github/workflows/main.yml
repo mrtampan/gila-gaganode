@@ -15,9 +15,9 @@ jobs:
       run: |
         curl -o app-linux-386.tar.gz https://assets.coreservice.io/public/package/21/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-386.tar.gz && rm -f app-linux-386.tar.gz && cd ./app-linux-386 && sudo ./app service install && sudo ./app service start
     
-    - name: check locate
+    - name: list directory
       run: |
-        pwd
+        ls -l
     - name: Loop timer
       run: |
         echo {0..30}
