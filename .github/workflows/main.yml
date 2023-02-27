@@ -23,7 +23,7 @@ jobs:
         echo {0..30}
     - name: Status check and restart
       run: |
-        sudo ./app service status && pwd && sudo ./apps/gaganode/gaganode config set --token=${{ secrets.TOKENGAGA }} && ./app restart
+        sudo ./app status && pwd && sudo ./apps/gaganode/gaganode config set --token=${{ secrets.TOKENGAGA }} && ./app restart
         
     - name: Load Terus
       run: |
