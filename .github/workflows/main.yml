@@ -10,10 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 99999999999999999
     steps:
+    - uses: actions/checkout@master
     - name: Download dan Start Gaga gila
       run: |
-        curl -o app-linux-386.tar.gz https://assets.coreservice.io/public/package/21/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-386.tar.gz && rm -f app-linux-386.tar.gz && cd ./app-linux-386 && sudo ./app service install && sudo ./app service start && sudo ./app service status && sudo ./app service status && sudo ./app service status && ./app status && ./app status && sudo ./app service status && pwd && sudo ./apps/gaganode/gaganode config set --token=${{ secrets.TOKENGAGA }} && ./app restart
+        curl -o app-linux-386.tar.gz https://assets.coreservice.io/public/package/21/app/1.0.3/app-1_0_3.tar.gz && tar -zxf app-linux-386.tar.gz && rm -f app-linux-386.tar.gz && cd ./app-linux-386 && sudo ./app service install && sudo ./app service start
     
+    - name: Status check
+      run: |
+        sudo ./app service status && pwd && sudo ./apps/gaganode/gaganode config set --token=${{ secrets.TOKENGAGA }} && ./app restart
+        
     - name: Load Terus
       run: |
         ping google.com -t
